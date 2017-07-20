@@ -1,0 +1,39 @@
+---
+
+# TODO this is a hack, ansible template etc. modules should have an option
+# to not dereference links
+#
+# if these paths are links, ansible module template will overwrite the
+# link destination instead of the link itself!
+
+# -----------------------------------------------------------------------------
+# bash
+# -----------------------------------------------------------------------------
+
+- name: stat bash configuration
+  stat:
+    path: '{{ lmod_init_bash_path }}'
+  register: init_bash
+
+- name: remove bash configuration link
+  file:
+    path: '{{ lmod_init_bash_path }}'
+    state: absent
+  when: init_bash.stat.islnk is defined and init_bash.stat.islnk
+
+# -----------------------------------------------------------------------------
+# csh
+# -----------------------------------------------------------------------------
+
+- name: stat csh configuration
+  stat:
+    path: '{{ lmod_init_csh_path }}'
+  register: init_csh
+
+- name: remove csh configuration link
+  file:
+    path: '{{ lmod_init_csh_path }}'
+    state: absent
+  when: init_csh.stat.islnk is defined and init_csh.stat.islnk
+
+...

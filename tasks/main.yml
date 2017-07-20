@@ -1,0 +1,33 @@
+---
+
+- name: include lmod dependencies
+  include: 'deps-{{ ansible_os_family | lower }}.yml'
+
+- name: check if lmod is installed
+  stat:
+    path: '{{ lmod_install_dir }}'
+  when: lmod_install
+  register: lmod_install_dir_s
+  changed_when: not lmod_install_dir_s.stat.exists
+
+- name: include install lmod
+  include: 'install.yml'
+  when: lmod_install and not lmod_install_dir_s.stat.exists
+
+- name: module path file
+  template:
+    src: 'modulespath.j2'
+    dest: '{{ lmod_install_dir }}/init/.modulespath'
+    owner: root
+    group: root
+    mode: 0644
+  when: lmod_install and lmod_module_path is defined
+
+- name: include shell configuration
+  include: 'canary-{{ lmod_canary }}.yml'
+
+- name: include spider cache cron job
+  include: 'spider-cron.yml'
+  when: lmod_spider_cache_cron
+
+...

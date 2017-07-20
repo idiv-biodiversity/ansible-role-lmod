@@ -1,0 +1,18 @@
+---
+
+- name: install update spider cache cron job
+  cron:
+    name: update lmod spider cache
+    minute: '{{ lmod_spider_cache_cron_minute }}'
+    user: 'root'
+    job: >
+      source {{ lmod_init_bash_source }}
+      &&
+      {{ lmod_install_link }}/libexec/update_lmod_system_cache_files
+      $MODULEPATH
+    cron_file: 'lmod'
+  tags:
+    - cron
+    - lmod-cron
+
+...

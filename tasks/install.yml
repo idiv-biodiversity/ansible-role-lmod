@@ -1,0 +1,39 @@
+---
+
+- name: include lmod build dependencies
+  include: 'build-deps-{{ ansible_os_family | lower }}.yml'
+
+- name: download lmod source tarball
+  get_url:
+    url: '{{ lmod_source_tarball_url }}'
+    dest: '{{ lmod_source_tarball_dest }}'
+
+- name: extract lmod source tarball
+  unarchive:
+    copy: no
+    src: '{{ lmod_source_tarball_dest }}'
+    dest: '/tmp'
+    creates: '{{ lmod_source_path }}'
+
+- name: configure and install lmod from source
+  shell: >
+    ./configure
+    --prefix={{ lmod_prefix }}
+    --with-module-root-path={{ lmod_module_root_path }}
+    --with-spiderCacheDir={{ lmod_spider_cache_dir }}
+    --with-updateSystemFn={{ lmod_spider_cache_stamp }}
+    &&
+    make install
+  args:
+    chdir: '{{ lmod_source_path }}'
+    creates: '{{ lmod_install_dir }}'
+
+- name: delete lmod sources
+  file:
+    path: '{{ item }}'
+    state: absent
+  with_items:
+    - '{{ lmod_source_path }}'
+    - '{{ lmod_source_tarball_dest }}'
+
+...

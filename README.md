@@ -132,10 +132,8 @@ Add to `requirements.yml`:
 
 # optional
 # - src: geerlingguy.repo-epel
-#   version: 1.2.2
 
-- src: https://github.com/idiv-biodiversity/ansible-role-lmod
-  name: lmod
+- src: idiv-biodiversity.lmod
 
 ...
 ```
@@ -167,7 +165,7 @@ Write a top-level playbook:
 - name: set up head/master hosts
   hosts: head
   roles:
-    - role: lmod
+    - role: idiv-biodiversity.lmod
       tags:
         - lmod
         - modules
@@ -188,7 +186,7 @@ Define the role dependency in `meta/main.yml`:
 
 dependencies:
 
-  - role: lmod
+  - role: idiv-biodiversity.lmod
     vars:
       lmod_prefix: '/software'
       lmod_canary: 'opt-in'

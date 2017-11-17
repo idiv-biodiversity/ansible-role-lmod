@@ -4,6 +4,8 @@ dependencies:
 
   - role: geerlingguy.repo-epel
     when: ansible_os_family == 'RedHat'
+    tags:
+      - yum-repo
 
 galaxy_info:
 

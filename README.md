@@ -162,7 +162,7 @@ Write a top-level playbook:
 ```yml
 ---
 
-- name: set up head/master hosts
+- name: head server
   hosts: head
   roles:
     - role: idiv-biodiversity.lmod

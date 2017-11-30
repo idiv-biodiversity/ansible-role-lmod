@@ -1,6 +1,6 @@
 ---
 
-- include: canary-rm-links.yml
+- import_tasks: canary-rm-links.yml
 
 - name: install canary opt-in scripts
   template:

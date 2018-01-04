@@ -42,7 +42,7 @@ Role Variables
 ### Base Variables
 
 ```yml
-lmod_version: '7.7.13'
+lmod_version: '7.7.14'
 lmod_install: no
 lmod_prefix: '/opt/apps'
 lmod_module_root_path: '{{ lmod_prefix }}/modulefiles'

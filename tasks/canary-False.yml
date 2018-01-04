@@ -1,5 +1,7 @@
 ---
 
+- import_tasks: canary-rm-opt-in-skel.yml
+
 - name: create shell configuration symlinks
   file:
     src: '{{ lmod_install_link }}/init/{{ item.src }}'

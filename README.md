@@ -104,9 +104,10 @@ This variable has three possible values:
 
 1.  `no`: do not use incremental roll-out, every user will init Lmod
 1.  `'opt-in'`: installs custom scripts that inits Lmod only if *opt-in* file exists
+1.  `'opt-in-skel'`: same as *opt-in* plus also installs automatically opt-in new users via [skeleton](http://www.linfo.org/etc_skel.html) in `/etc/skel`
 1.  `'opt-out'`: installs custom scripts that don't init Lmod if *opt-out* file exists
 
-**Note:** You can ad-hoc switch from **opt-in** to **opt-out** and from **opt-out** to **no**, the tasks provided by this role will handle these transitions automatically.
+**Note:** You can switch from **opt-in** to **opt-in-skel**, from both **opt-in** variants to **opt-out** and from **opt-out** to **no**, the tasks provided by this role will handle these transitions automatically.
 
 These are the file names for **opt-in** and **opt-out** that are looked for in the users home directory:
 

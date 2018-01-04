@@ -1,0 +1,8 @@
+---
+
+- name: remove bash configuration link
+  file:
+    path: '/etc/skel/{{ lmod_canary_opt_in_file }}'
+    state: absent
+
+...

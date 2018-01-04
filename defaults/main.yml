@@ -41,6 +41,9 @@ lmod_init_csh_file: 'z00-lmod.csh'
 # - opt-in: installs custom scripts that init lmod
 #   if opt-in file exists (see below)
 #
+# - opt-in-skel: same as opt-in plus automatically opt-in new users via
+#   skeleton in /etc/skel
+#
 # - opt-out: installs custom scripts that don't init lmod
 #   if opt-out file exists (see below)
 #

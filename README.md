@@ -30,7 +30,7 @@ Table of Contents
 Requirements
 ------------
 
-- Ansible 2+
+- Ansible 2.4
 - **RedHat**-based distribution
 - **cron** for regular [system spider cache update](#system-spider-cache)
 

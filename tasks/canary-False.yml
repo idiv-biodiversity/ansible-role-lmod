@@ -9,7 +9,7 @@
     state: link
     force: yes
   with_items:
-    - src: 'profile',
+    - src: 'profile'
       dest: '{{ lmod_init_bash_path }}'
     - src: 'cshrc'
       dest: '{{ lmod_init_csh_path }}'

@@ -2,16 +2,6 @@
 
 - name: install lmod dependencies
   yum:
-    pkg: '{{ item }}'
-  with_items:
-    - lua
-    - lua-devel
-    - lua-filesystem
-    - lua-json
-    - lua-lpeg
-    - lua-posix
-    - lua-term
-    - tcl
-    - tcl-devel
+    pkg: '{{ lmod_os_packages | join(",") }}'
 
 ...

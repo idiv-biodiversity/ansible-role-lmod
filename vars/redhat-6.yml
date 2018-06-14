@@ -1,0 +1,14 @@
+---
+
+lmod_os_packages:
+  - lua
+  - lua-devel
+  - lua-filesystem
+  - lua-json
+  - lua-lpeg
+  - lua-posix
+  - lua-term
+  - tcl
+  - tcl-devel
+
+...

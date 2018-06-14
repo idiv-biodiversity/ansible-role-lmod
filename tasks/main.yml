@@ -4,7 +4,8 @@
   include_vars: >
     {{ ansible_os_family | lower }}-{{ ansible_distribution_major_version }}.yml
 
-- include_tasks: 'deps-{{ ansible_os_family | lower }}.yml'
+- name: install dependencies
+  include_tasks: 'deps-{{ ansible_os_family | lower }}.yml'
 
 - name: check if lmod is installed
   stat:
@@ -16,7 +17,8 @@
     not lmod_install_dir_s.stat.exists
   failed_when: no
 
-- include_tasks: install.yml
+- name: install lmod
+  include_tasks: install.yml
   when: >
     lmod_install and
     not lmod_install_dir_s.stat.exists
@@ -30,11 +32,13 @@
     mode: 0644
   when: lmod_install and lmod_module_path is defined
 
-- include_tasks: 'canary-{{ lmod_canary }}.yml'
+- name: use canary release
+  include_tasks: 'canary-{{ lmod_canary }}.yml'
   tags:
     - lmod-canary
 
-- include_tasks: 'spider-cron.yml'
+- name: install spider cache cron
+  include_tasks: 'spider-cron.yml'
   when: lmod_spider_cache_cron
 
 ...

@@ -1,6 +1,7 @@
 ---
 
-- include_tasks: 'build-deps-{{ ansible_os_family | lower }}.yml'
+- name: install build dependencies
+  include_tasks: 'build-deps-{{ ansible_os_family | lower }}.yml'
 
 - name: download lmod source tarball
   get_url:

@@ -1,6 +1,7 @@
 ---
 
-- import_tasks: canary-rm-opt-in-skel.yml
+- name: remove opt-in skeleton files
+  import_tasks: canary-rm-opt-in-skel.yml
 
 - name: create shell configuration symlinks
   file:

@@ -2,8 +2,6 @@
 
 - name: install lmod build dependencies
   yum:
-    pkg: '{{ item }}'
-  with_items:
-    - gcc
+    pkg: gcc
 
 ...

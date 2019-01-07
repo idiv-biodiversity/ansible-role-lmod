@@ -64,7 +64,7 @@ You can also specify the module file paths which will be taken over the default
 `lmod_module_root_path`:
 
 ```yml
-lmod_module_path:
+lmod_module_paths:
   - '/software/modulefiles/compiler'
   - '/software/modulefiles/libraries'
   - '/software/modulefiles/tools'

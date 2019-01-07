@@ -30,7 +30,7 @@
     owner: root
     group: root
     mode: 0644
-  when: lmod_install and lmod_module_path is defined
+  when: lmod_install and lmod_module_paths is defined
 
 - name: use canary release
   include_tasks: 'canary-{{ lmod_canary }}.yml'

@@ -3,9 +3,15 @@ Ansible Role: Lmod
 
 An Ansible role that installs [Lmod][] from source.
 
-This role was written with convenient **installation on HPC clusters** in mind. This means that it is possible to install the actual Lmod software into a global, networked file system share on only a single host, while all other hosts install just the Lmod dependencies and the [shell configuration](#shell-configuration) files. Nevertheless, it is of course possible to install Lmod with this role on a single server.
+This role was written with convenient **installation on HPC clusters** in mind.
+This means that it is possible to install the actual Lmod software into a
+global, networked file system share on only a single host, while all other
+hosts install just the Lmod dependencies and the [shell
+configuration](#shell-configuration) files. Nevertheless, it is of course
+possible to install Lmod with this role on a single server.
 
-Also, it is possible with this role to incrementally [transition from another module system](#incremental-roll-out) to Lmod.
+Also, it is possible with this role to incrementally [transition from another
+module system](#incremental-roll-out) to Lmod.
 
 Table of Contents
 -----------------
@@ -34,7 +40,8 @@ Requirements
 - **RedHat**-based distribution
 - **cron** for regular [system spider cache update](#system-spider-cache)
 
-**Help Wanted:** Contributions for **Debian**-based distributions are highly welcome pull requests!
+**Help Wanted:** Contributions for **Debian**-based distributions are highly
+welcome pull requests!
 
 Role Variables
 --------------
@@ -48,9 +55,13 @@ lmod_prefix: '/opt/apps'
 lmod_module_root_path: '{{ lmod_prefix }}/modulefiles'
 ```
 
-**For HPC clusters:** The variable `lmod_install` should only be set to `yes` for the host that actually installs Lmod to the global, networked file system, all other hosts will only install the dependencies. This should be set in `host_vars`, see [examples](#example-playbook).
+**For HPC clusters:** The variable `lmod_install` should only be set to `yes`
+for the host that actually installs Lmod to the global, networked file system,
+all other hosts will only install the dependencies. This should be set in
+`host_vars`, see [examples](#example-playbook).
 
-You can also specify the module file paths which will be taken over the default `lmod_module_root_path`:
+You can also specify the module file paths which will be taken over the default
+`lmod_module_root_path`:
 
 ```yml
 lmod_module_path:
@@ -77,24 +88,32 @@ lmod_spider_cache_cron: no
 lmod_spider_cache_cron_minute: '0'
 ```
 
-**For HPC clusters:** This is also needed only on a single host, following the same rules as `lmod_install`, see [examples](#example-playbook).
+**For HPC clusters:** This is also needed only on a single host, following the
+same rules as `lmod_install`, see [examples](#example-playbook).
 
 ### Shell Configuration
 
-Names of the shell configuration files which will be written to `/etc/profile.d`:
+Names of the shell configuration files which will be written to
+`/etc/profile.d`:
 
 ```yml
 lmod_init_bash_file: 'z00-lmod.sh'
 lmod_init_csh_file: 'z00-lmod.csh'
 ```
 
-Changing these is only required if they need to be `source`'d in a specific order, e.g. if another script requires the `module` or `ml` functions, they need to be `source`'d *after* the Lmod files.
+Changing these is only required if they need to be `source`'d in a specific
+order, e.g. if another script requires the `module` or `ml` functions, they
+need to be `source`'d *after* the Lmod files.
 
 ### Incremental Roll-Out
 
-This module provides a way for *incremental roll-out* aka *canary release*. This may be important if you are migrating from another environment module system to Lmod.
+This module provides a way for *incremental roll-out* aka *canary release*.
+This may be important if you are migrating from another environment module
+system to Lmod.
 
-**Note:** For more information about canary releases in general, see [this blog post][canary]. The Lmod documentation this specific incremental roll-out is based on can be found [here][lmod-canary].
+**Note:** For more information about canary releases in general, see [this blog
+post][canary]. The Lmod documentation this specific incremental roll-out is
+based on can be found [here][lmod-canary].
 
 ```yml
 lmod_canary: no
@@ -103,25 +122,36 @@ lmod_canary: no
 This variable has three possible values:
 
 1.  `no`: do not use incremental roll-out, every user will init Lmod
-1.  `'opt-in'`: installs custom scripts that inits Lmod only if *opt-in* file exists
-1.  `'opt-in-skel'`: same as *opt-in* plus also installs automatically opt-in new users via [skeleton](http://www.linfo.org/etc_skel.html) in `/etc/skel`
-1.  `'opt-out'`: installs custom scripts that don't init Lmod if *opt-out* file exists
+1.  `'opt-in'`: installs custom scripts that inits Lmod only if *opt-in* file
+    exists
+1.  `'opt-in-skel'`: same as *opt-in* plus also installs automatically opt-in
+    new users via [skeleton](http://www.linfo.org/etc_skel.html) in `/etc/skel`
+1.  `'opt-out'`: installs custom scripts that don't init Lmod if *opt-out* file
+    exists
 
-**Note:** You can switch from **opt-in** to **opt-in-skel**, from both **opt-in** variants to **opt-out** and from **opt-out** to **no**, the tasks provided by this role will handle these transitions automatically.
+**Note:** You can switch from **opt-in** to **opt-in-skel**, from both
+**opt-in** variants to **opt-out** and from **opt-out** to **no**, the tasks
+provided by this role will handle these transitions automatically.
 
-These are the file names for **opt-in** and **opt-out** that are looked for in the users home directory:
+These are the file names for **opt-in** and **opt-out** that are looked for in
+the users home directory:
 
 ```yml
 lmod_canary_opt_in_file: '.lmod-yes'
 lmod_canary_opt_out_file: '.lmod-no'
 ```
 
-**Note:** If you are using the incremental roll-out, you simply need to let your users know that they need to `touch ~/.lmod-yes` for **opt-in**, `touch ~/.lmod-no` for **opt-out** and to remove these files if they want to fallback to the respective default behavior.
+**Note:** If you are using the incremental roll-out, you simply need to let
+your users know that they need to `touch ~/.lmod-yes` for **opt-in**, `touch
+~/.lmod-no` for **opt-out** and to remove these files if they want to fallback
+to the respective default behavior.
 
 Dependencies
 ------------
 
-This role *conditionally* depends on [geerlingguy.repo-epel][repo-epel] for **RedHat**-based distributions to install runtime and build dependencies. Not all of these dependencies are included in default repositories.
+This role *conditionally* depends on [geerlingguy.repo-epel][repo-epel] for
+**RedHat**-based distributions to install runtime and build dependencies. Not
+all of these dependencies are included in default repositories.
 
 Example Playbook
 ----------------
@@ -145,7 +175,9 @@ Download:
 $ ansible-galaxy install -r requirements.yml
 ```
 
-**For HPC clusters:** As explained above, some variables need to be set only on the master/head host (whatever you call it). You should set these in the respective `host_vars` file, e.g. `host_vars/head.yml`:
+**For HPC clusters:** As explained above, some variables need to be set only on
+the master/head host (whatever you call it). You should set these in the
+respective `host_vars` file, e.g. `host_vars/head.yml`:
 
 ```yml
 ---
@@ -206,7 +238,9 @@ MIT
 Author Information
 ------------------
 
-This role was created in 2017 by [Christian Krause][author] aka [wookietreiber at GitHub][wookietreiber], HPC cluster systems administrator at the [German Centre for Integrative Biodiversity Research (iDiv)][idiv].
+This role was created in 2017 by [Christian Krause][author] aka [wookietreiber
+at GitHub][wookietreiber], HPC cluster systems administrator at the [German
+Centre for Integrative Biodiversity Research (iDiv)][idiv].
 
 
 [author]: https://www.idiv.de/groups_and_people/employees/details/eshow/krause-christian.html

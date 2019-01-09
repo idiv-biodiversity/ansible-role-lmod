@@ -18,7 +18,7 @@ lmod_module_root_path: '{{ lmod_prefix }}/modulefiles'
 
 lmod_spider_cache_dir: '{{ lmod_module_root_path }}/.spider-cache'
 
-lmod_spider_cache_stamp: '{{ lmod_module_root_path }}/.spider-cache.stamp'
+lmod_spider_cache_stamp_file: '{{ lmod_module_root_path }}/.spider-cache.stamp'
 
 lmod_spider_cache_cron: no
 

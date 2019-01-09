@@ -21,7 +21,7 @@
     --prefix={{ lmod_prefix }}
     --with-module-root-path={{ lmod_module_root_path }}
     --with-spiderCacheDir={{ lmod_spider_cache_dir }}
-    --with-updateSystemFn={{ lmod_spider_cache_stamp }}
+    --with-updateSystemFn={{ lmod_spider_cache_stamp_file }}
     &&
     make install
   args:

@@ -78,7 +78,7 @@ Location of the system spider cache files:
 
 ```yml
 lmod_spider_cache_dir: '{{ lmod_module_root_path }}/.spider-cache'
-lmod_spider_cache_stamp: '{{ lmod_module_root_path }}/.spider-cache.stamp'
+lmod_spider_cache_stamp_file: '{{ lmod_module_root_path }}/.spider-cache.stamp'
 ```
 
 Whether to install the update system spider cache cron job:

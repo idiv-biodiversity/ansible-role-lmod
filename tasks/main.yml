@@ -17,11 +17,17 @@
     not lmod_install_dir_s.stat.exists
   failed_when: no
 
-- name: install lmod
+- name: installation
   include_tasks: install.yml
   when: >
     lmod_install and
     not lmod_install_dir_s.stat.exists
+
+- name: configuration
+  import_tasks: config.yml
+  when: lmod_install
+  tags:
+    - lmod-config
 
 - name: module path file
   template:

@@ -24,6 +24,7 @@ Table of Contents
   * [System Spider Cache](#system-spider-cache)
   * [Shell Configuration](#shell-configuration)
   * [Incremental Roll-Out](#incremental-roll-out)
+  * [Administrative Messages](#administrative-messages)
 - [Dependencies](#dependencies)
 - [Example Playbook](#example-playbook)
   * [Top-Level Playbook](#top-level-playbook)
@@ -161,6 +162,26 @@ lmod_canary_opt_out_file: '.lmod-no'
 your users know that they need to `touch ~/.lmod-yes` for **opt-in**, `touch
 ~/.lmod-no` for **opt-out** and to remove these files if they want to fallback
 to the respective default behavior.
+
+### Administrative Messages
+
+Optionally, you can define administrative messages for modules to be shown when
+they are loaded:
+
+```yml
+lmod_admin_messages:
+
+  - pattern: gcc/2%.95
+    message: >-
+      This module is deprecated and will be removed from the system on Jan 1
+      1999. Please switch to a newer compiler.
+
+  - pattern: /opt/apps/modulefiles/Compiler/gcc/4.7.2/boost/1.55.0
+    message: We are having issues.
+
+  - pattern: boost/1%.[5-7].*
+    message: We are having more issues.
+```
 
 Dependencies
 ------------

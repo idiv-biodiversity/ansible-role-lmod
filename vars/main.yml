@@ -1,8 +1,10 @@
 ---
 
-lmod_install_dir: '{{ lmod_prefix }}/lmod/{{ lmod_version }}'
+lmod_base_dir: '{{ lmod_prefix }}/lmod'
 
-lmod_install_link: '{{ lmod_prefix }}/lmod/lmod'
+lmod_install_dir: '{{ lmod_base_dir }}/{{ lmod_version }}'
+
+lmod_install_link: '{{ lmod_base_dir }}/lmod'
 
 # -----------------------------------------------------------------------------
 # source

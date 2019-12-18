@@ -1,0 +1,22 @@
+---
+
+- name: create lmod etc directory
+  file:
+    path: '{{ lmod_base_dir }}/etc'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  when: >
+    lmod_admin_messages is defined
+
+- name: install admin file
+  template:
+    src: admin.list.j2
+    dest: '{{ lmod_base_dir }}/etc/admin.list'
+    owner: root
+    group: root
+    mode: 0644
+  when: lmod_admin_messages is defined
+
+...

@@ -24,6 +24,9 @@ lmod_spider_cache_cron: no
 
 lmod_spider_cache_cron_minute: '0'
 
+lmod_spider_cache_cron_modulepath:
+  - '$MODULEPATH'
+
 # -----------------------------------------------------------------------------
 # shell configuration
 # -----------------------------------------------------------------------------

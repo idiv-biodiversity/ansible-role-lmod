@@ -9,7 +9,7 @@
       source {{ lmod_init_bash_source }}
       &&
       {{ lmod_install_link }}/libexec/update_lmod_system_cache_files
-      $MODULEPATH
+      {{ lmod_spider_cache_cron_modulepath | join(':') }}
     cron_file: 'lmod'
   tags:
     - cron

@@ -88,6 +88,22 @@ lmod_spider_cache_cron: no
 lmod_spider_cache_cron_minute: '0'
 ```
 
+Change the paths to include when generating the system spider cache:
+
+```yml
+lmod_spider_cache_cron_modulepath:
+  - '$MODULEPATH'
+```
+
+**Note:** It may be useful to append paths here other than the default
+`MODULEPATH`, especially for communities within your system that provide their
+own module directories. Suppose your default is `/software/modules`, which
+everyone gets, but you also have `/software/community/group-{a,b,c}/modules`,
+which can be included on demand. By adding these paths to the system spider
+cache, it will include those modules *transparently*, i.e. you would only be
+able to find them with `module spider`, if you had included that module
+directory in your `MODULEPATH`.
+
 **For HPC clusters:** This is also needed only on a single host, following the
 same rules as `lmod_install`, see [examples](#example-playbook).
 

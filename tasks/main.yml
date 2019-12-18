@@ -38,7 +38,9 @@
     - lmod-canary
 
 - name: install spider cache cron
-  include_tasks: 'spider-cron.yml'
+  import_tasks: spider-cron.yml
   when: lmod_spider_cache_cron
+  tags:
+    - lmod-spider-cache
 
 ...

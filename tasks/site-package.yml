@@ -1,0 +1,11 @@
+---
+
+- name: deploy site package script
+  template:
+    src: '{{ lmod_site_package }}'
+    dest: '{{ lmod_install_dir }}/libexec/SitePackage.lua'
+    owner: root
+    group: root
+    mode: 0644
+
+...

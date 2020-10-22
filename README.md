@@ -73,6 +73,14 @@ lmod_module_paths:
 
 This may be useful if you have **legacy modules**.
 
+### Site Package
+
+You can modify the `SitePackage.lua`:
+
+```yml
+lmod_site_package: path/to/my/templates/SitePackage.lua
+```
+
 ### System Spider Cache
 
 Location of the system spider cache files:

@@ -23,6 +23,12 @@
     lmod_install and
     not lmod_install_dir_s.stat.exists
 
+- import_tasks: site-package.yml
+  when: >
+    lmod_install and lmod_site_package is defined
+  tags:
+    - lmod-site-package
+
 - name: configuration
   import_tasks: config.yml
   when: lmod_install

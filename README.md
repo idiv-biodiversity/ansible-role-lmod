@@ -38,7 +38,7 @@ Requirements
 ------------
 
 - Ansible 2.4
-- **RedHat**-based distribution
+- **RedHat**-based distribution or **Ubuntu Bionic**
 - **cron** for regular [system spider cache update](#system-spider-cache)
 
 **Help Wanted:** Contributions for **Debian**-based distributions are highly
@@ -285,7 +285,9 @@ Author Information
 
 This role was created in 2017 by [Christian Krause][author] aka [wookietreiber
 at GitHub][wookietreiber], HPC cluster systems administrator at the [German
-Centre for Integrative Biodiversity Research (iDiv)][idiv].
+Centre for Integrative Biodiversity Research (iDiv)][idiv]. Ubuntu Bionic support
+was added by [Tom Schoonjans][tschoonj], Research Software Engineer for HPC and Cloud
+at the [Rosalind Franklin Institute][rfi].
 
 
 [author]: https://www.idiv.de/groups_and_people/employees/details/eshow/krause-christian.html
@@ -296,3 +298,5 @@ Centre for Integrative Biodiversity Research (iDiv)][idiv].
 [Lmod]: http://lmod.readthedocs.io/en/latest/
 [repo-epel]: https://galaxy.ansible.com/geerlingguy/repo-epel/
 [wookietreiber]: https://github.com/wookietreiber
+[tschoonj]: https://github.com/tschoonj
+[rfi]: https://www.rfi.ac.uk/

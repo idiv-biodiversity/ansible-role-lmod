@@ -1,6 +1,6 @@
 ---
 
-# The following is based on https://linuxize.com/post/how-to-install-xrdp-on-ubuntu-18-04
+# The following is based on https://github.com/ansible/ansible/issues/25414#issuecomment-440549135
 - name: Wait for any possibly running unattended upgrade to finish
   raw: systemd-run --property="After=apt-daily.service apt-daily-upgrade.service" --wait /bin/true
 

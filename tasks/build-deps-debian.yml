@@ -1,0 +1,7 @@
+---
+
+- name: install lmod build dependencies
+  apt:
+    name: gcc
+
+...

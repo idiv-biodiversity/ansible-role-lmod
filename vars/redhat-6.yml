@@ -11,4 +11,7 @@ lmod_os_packages:
   - tcl
   - tcl-devel
 
+lmod_lua_interpreter: /usr/bin/lua
+lmod_luac_interpreter: /usr/bin/luac
+
 ...

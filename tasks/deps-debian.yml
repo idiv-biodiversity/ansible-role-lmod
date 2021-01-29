@@ -1,7 +1,7 @@
 ---
 
 # The following is based on https://github.com/ansible/ansible/issues/25414#issuecomment-440549135
-- name: Wait for any possibly running unattended upgrade to finish
+- name: wait for any possibly running unattended upgrade to finish # noqa 301
   raw: systemd-run --property="After=apt-daily.service apt-daily-upgrade.service" --wait /bin/true
 
 - name: install lmod dependencies

@@ -290,7 +290,7 @@ was added by [Tom Schoonjans][tschoonj], Research Software Engineer for HPC and 
 at the [Rosalind Franklin Institute][rfi].
 
 
-[author]: https://www.idiv.de/groups_and_people/employees/details/eshow/krause-christian.html
+[author]: https://www.idiv.de/en/groups_and_people/employees/details/61.html
 [canary]: https://martinfowler.com/bliki/CanaryRelease.html
 [lmod-canary]: http://lmod.readthedocs.io/en/latest/045_transition.html
 [epel]: https://fedoraproject.org/wiki/EPEL

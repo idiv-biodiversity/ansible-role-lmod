@@ -38,11 +38,7 @@ Requirements
 ------------
 
 - Ansible 2.4
-- **RedHat**-based distribution or **Ubuntu Bionic**
 - **cron** for regular [system spider cache update](#system-spider-cache)
-
-**Help Wanted:** Contributions for **Debian**-based distributions are highly
-welcome pull requests!
 
 Role Variables
 --------------

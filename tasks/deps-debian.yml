@@ -14,6 +14,14 @@
     src: /usr/lib/x86_64-linux-gnu/liblua5.3-posix.so
     dest: /usr/lib/x86_64-linux-gnu/lua/5.3/posix.so
     state: link
-  when: ansible_distribution_release == 'bionic' and ansible_distribution_release == 'focal'
+  when: ansible_distribution== 'Ubuntu' and ansible_distribution_release == 'bionic' 
+
+# see https://github.com/TACC/Lmod/commit/1d15717144f595b9a09e8421aa00b5dead3ed21d
+- name: fix lua-posix on Ubuntu 20.04
+  file:
+    src: /usr/lib/x86_64-linux-gnu/liblua5.3-posix.so
+    dest: /usr/lib/x86_64-linux-gnu/lua/5.3/posix.so
+    state: link
+  when: ansible_distribution== 'Ubuntu' and ansible_distribution_release == 'focal'
 
 ...

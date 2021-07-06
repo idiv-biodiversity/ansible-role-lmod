@@ -1,0 +1,39 @@
+---
+
+yaml-files:
+  - '*.yaml'
+  - '*.yml'
+  - '.yamllint'
+  - '.ansible-lint'
+
+extends: default
+
+rules:
+  braces:
+    min-spaces-inside: 1
+    max-spaces-inside: 1
+  brackets:
+    max-spaces-inside: 1
+  colons:
+    max-spaces-after: -1
+  commas:
+    min-spaces-after: 1
+    max-spaces-after: -1
+  comments:
+    require-starting-space: yes
+    min-spaces-from-content: 1
+  document-start:
+    present: yes
+  document-end:
+    present: yes
+  empty-lines:
+    max: 1
+  key-duplicates: enable
+  line-length: disable
+  new-lines:
+    type: unix
+  truthy:
+    allowed-values: ['yes', 'no']
+    check-keys: no
+
+...

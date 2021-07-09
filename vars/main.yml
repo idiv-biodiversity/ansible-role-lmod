@@ -10,7 +10,8 @@ lmod_install_link: '{{ lmod_base_dir }}/lmod'
 # source
 # -----------------------------------------------------------------------------
 
-lmod_source_tarball_url: 'https://github.com/TACC/Lmod/archive/{{ lmod_version }}.tar.gz'
+lmod_source_tarball_url: >-
+  https://github.com/TACC/Lmod/archive/{{ lmod_version }}.tar.gz
 
 lmod_source_tarball_dest: '/tmp/lmod-{{ lmod_version }}.tar.gz'
 
@@ -35,5 +36,15 @@ lmod_init_csh_source: '{{ lmod_install_link }}/init/cshrc'
 lmod_canary_opt_in_path: '~/{{ lmod_canary_opt_in_file }}'
 
 lmod_canary_opt_out_path: '~/{{ lmod_canary_opt_out_file }}'
+
+# -----------------------------------------------------------------------------
+# operating system
+# -----------------------------------------------------------------------------
+
+__lmod_os_distro: >-
+  {{ ansible_os_family | lower }}-{{ ansible_distribution_major_version }}
+
+__lmod_os_release: >-
+  {{ ansible_distribution | lower }}-{{ ansible_distribution_release }}
 
 ...

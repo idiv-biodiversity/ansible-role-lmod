@@ -29,7 +29,8 @@ rules:
   empty-lines:
     max: 1
   key-duplicates: enable
-  line-length: disable
+  line-length:
+    max: 79
   new-lines:
     type: unix
   truthy:

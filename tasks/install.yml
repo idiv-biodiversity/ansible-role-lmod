@@ -7,6 +7,7 @@
   ansible.builtin.get_url:
     url: '{{ lmod_source_tarball_url }}'
     dest: '{{ lmod_source_tarball_dest }}'
+    mode: 0644
 
 - name: extract lmod source tarball
   ansible.builtin.unarchive:

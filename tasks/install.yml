@@ -4,19 +4,19 @@
   include_tasks: 'build-deps-{{ ansible_os_family | lower }}.yml'
 
 - name: download lmod source tarball
-  get_url:
+  ansible.builtin.get_url:
     url: '{{ lmod_source_tarball_url }}'
     dest: '{{ lmod_source_tarball_dest }}'
 
 - name: extract lmod source tarball
-  unarchive:
+  ansible.builtin.unarchive:
     copy: no
     src: '{{ lmod_source_tarball_dest }}'
     dest: '/tmp'
     creates: '{{ lmod_source_path }}'
 
 - name: configure and install lmod from source
-  shell: >
+  ansible.builtin.shell: >
     ./configure
     --prefix={{ lmod_prefix }}
     --with-module-root-path={{ lmod_module_root_path }}
@@ -31,7 +31,7 @@
     creates: '{{ lmod_install_dir }}'
 
 - name: delete lmod sources
-  file:
+  ansible.builtin.file:
     path: '{{ item }}'
     state: absent
   with_items:

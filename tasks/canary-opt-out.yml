@@ -4,7 +4,7 @@
   import_tasks: canary-rm-opt-in-skel.yml
 
 - name: install canary opt-out scripts
-  template:
+  ansible.builtin.template:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
     follow: no

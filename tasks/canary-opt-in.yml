@@ -1,7 +1,7 @@
 ---
 
 - name: install canary opt-in scripts
-  template:
+  ansible.builtin.template:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
     follow: no

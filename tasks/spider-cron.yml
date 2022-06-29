@@ -1,7 +1,7 @@
 ---
 
 - name: install update spider cache cron job
-  cron:
+  ansible.builtin.cron:
     name: update lmod spider cache
     minute: '{{ lmod_spider_cache_cron_minute }}'
     user: 'root'

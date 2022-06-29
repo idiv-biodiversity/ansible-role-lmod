@@ -1,14 +1,14 @@
 ---
 
 - name: include os dependent variables
-  include_vars: >
+  ansible.builtin.include_vars: >
     {{ __lmod_os_distro }}.yml
 
 - name: install dependencies
   include_tasks: 'deps-{{ ansible_os_family | lower }}.yml'
 
 - name: check if lmod is installed
-  stat:
+  ansible.builtin.stat:
     path: '{{ lmod_install_dir }}'
   when: lmod_install
   register: lmod_install_dir_s
@@ -36,7 +36,7 @@
     - lmod-config
 
 - name: module path file
-  template:
+  ansible.builtin.template:
     src: 'modulespath.j2'
     dest: '{{ lmod_install_dir }}/init/.modulespath'
     owner: root

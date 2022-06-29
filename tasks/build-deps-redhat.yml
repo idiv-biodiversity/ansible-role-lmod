@@ -1,7 +1,7 @@
 ---
 
 - name: install lmod build dependencies
-  yum:
+  ansible.builtin.yum:
     pkg: gcc
 
 ...

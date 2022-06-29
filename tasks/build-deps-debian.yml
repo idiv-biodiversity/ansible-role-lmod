@@ -1,7 +1,7 @@
 ---
 
 - name: install lmod build dependencies
-  apt:
+  ansible.builtin.apt:
     name: gcc
 
 ...

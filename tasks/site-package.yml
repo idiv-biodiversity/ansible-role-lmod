@@ -1,7 +1,7 @@
 ---
 
 - name: deploy site package script
-  template:
+  ansible.builtin.template:
     src: '{{ lmod_site_package }}'
     dest: '{{ lmod_install_dir }}/libexec/SitePackage.lua'
     owner: root

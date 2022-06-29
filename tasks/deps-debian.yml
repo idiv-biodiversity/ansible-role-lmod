@@ -2,18 +2,18 @@
 
 # https://github.com/ansible/ansible/issues/25414#issuecomment-440549135
 - name: wait for any possibly running unattended upgrade to finish # noqa 301
-  raw: >-
+  ansible.builtin.raw: >-
     systemd-run
       --property="After=apt-daily.service apt-daily-upgrade.service"
       --wait /bin/true
 
 - name: install lmod dependencies
-  apt:
+  ansible.builtin.apt:
     name: '{{ lmod_os_packages | join(",") }}'
 
 # https://github.com/TACC/Lmod/commit/1d15717144f595b9a09e8421aa00b5dead3ed21d
 - name: fix lua-posix on Ubuntu
-  file:
+  ansible.builtin.file:
     src: /usr/lib/x86_64-linux-gnu/liblua5.3-posix.so
     dest: /usr/lib/x86_64-linux-gnu/lua/5.3/posix.so
     state: link

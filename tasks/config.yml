@@ -1,7 +1,7 @@
 ---
 
 - name: create lmod etc directory
-  file:
+  ansible.builtin.file:
     path: '{{ lmod_base_dir }}/etc'
     state: directory
     owner: root
@@ -11,7 +11,7 @@
     lmod_admin_messages is defined
 
 - name: install admin file
-  template:
+  ansible.builtin.template:
     src: admin.list.j2
     dest: '{{ lmod_base_dir }}/etc/admin.list'
     owner: root

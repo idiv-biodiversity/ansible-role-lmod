@@ -1,5 +1,7 @@
 ---
 
+lmod_os_repos: []
+
 lmod_os_packages:
   - lua
   - lua-devel

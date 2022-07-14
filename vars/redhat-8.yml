@@ -1,10 +1,15 @@
 ---
 
+lmod_os_repos:
+  - powertools
+
 lmod_os_packages:
   - lua
+  - lua-devel
   - lua-json
   - lua-lpeg
   - lua-term
+  - lua-posix
   - tcl
   - tcl-devel
 

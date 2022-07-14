@@ -4,7 +4,6 @@ lmod_os_packages:
   - lua
   - lua-json
   - lua-lpeg
-  - lua-posix
   - lua-term
   - tcl
   - tcl-devel

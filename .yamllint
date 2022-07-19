@@ -24,8 +24,12 @@ rules:
     min-spaces-from-content: 1
   document-start:
     present: yes
+    ignore: >-
+      .github/dependabot.yml
   document-end:
     present: yes
+    ignore: >-
+      .github/dependabot.yml
   empty-lines:
     max: 1
   key-duplicates: enable

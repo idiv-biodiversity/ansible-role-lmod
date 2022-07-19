@@ -1,3 +1,3 @@
-if [[ ! -e {{ lmod_canary_opt_out_path }} && -r {{ lmod_init_bash_source }} ]] ; then
-  source {{ lmod_init_bash_source }}
+if [[ ! -e {{ __lmod_canary_opt_out_path }} && -r {{ __lmod_init_bash_source }} ]] ; then
+  source {{ __lmod_init_bash_source }}
 fi

@@ -2,7 +2,7 @@
 
 - name: create lmod etc directory
   ansible.builtin.file:
-    path: '{{ lmod_base_dir }}/etc'
+    path: '{{ __lmod_base_dir }}/etc'
     state: directory
     owner: root
     group: root
@@ -13,7 +13,7 @@
 - name: install admin file
   ansible.builtin.template:
     src: admin.list.j2
-    dest: '{{ lmod_base_dir }}/etc/admin.list'
+    dest: '{{ __lmod_base_dir }}/etc/admin.list'
     owner: root
     group: root
     mode: 0644

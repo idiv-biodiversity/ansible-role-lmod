@@ -5,7 +5,7 @@
 
 - name: create shell configuration symlinks
   ansible.builtin.file:
-    src: '{{ lmod_install_link }}/init/{{ item.src }}'
+    src: '{{ __lmod_install_link }}/init/{{ item.src }}'
     dest: '{{ item.dest }}'
     owner: root
     group: root
@@ -13,8 +13,8 @@
     force: yes
   with_items:
     - src: 'profile'
-      dest: '{{ lmod_init_bash_path }}'
+      dest: '{{ __lmod_init_bash_path }}'
     - src: 'cshrc'
-      dest: '{{ lmod_init_csh_path }}'
+      dest: '{{ __lmod_init_csh_path }}'
 
 ...

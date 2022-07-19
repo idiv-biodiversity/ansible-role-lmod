@@ -5,16 +5,16 @@
 
 - name: download lmod source tarball
   ansible.builtin.get_url:
-    url: '{{ lmod_source_tarball_url }}'
-    dest: '{{ lmod_source_tarball_dest }}'
+    url: '{{ __lmod_source_tarball_url }}'
+    dest: '{{ __lmod_source_tarball_dest }}'
     mode: 0644
 
 - name: extract lmod source tarball
   ansible.builtin.unarchive:
     copy: no
-    src: '{{ lmod_source_tarball_dest }}'
+    src: '{{ __lmod_source_tarball_dest }}'
     dest: '/tmp'
-    creates: '{{ lmod_source_path }}'
+    creates: '{{ __lmod_source_path }}'
 
 - name: configure and install lmod from source
   ansible.builtin.shell: >
@@ -23,20 +23,20 @@
     --with-module-root-path={{ lmod_module_root_path }}
     --with-spiderCacheDir={{ lmod_spider_cache_dir }}
     --with-updateSystemFn={{ lmod_spider_cache_stamp_file }}
-    --with-lua={{ lmod_lua_interpreter }}
-    --with-luac={{ lmod_luac_interpreter }}
+    --with-lua={{ __lmod_lua_interpreter }}
+    --with-luac={{ __lmod_luac_interpreter }}
     &&
     make install
   args:
-    chdir: '{{ lmod_source_path }}'
-    creates: '{{ lmod_install_dir }}'
+    chdir: '{{ __lmod_source_path }}'
+    creates: '{{ __lmod_install_dir }}'
 
 - name: delete lmod sources
   ansible.builtin.file:
     path: '{{ item }}'
     state: absent
   with_items:
-    - '{{ lmod_source_path }}'
-    - '{{ lmod_source_tarball_dest }}'
+    - '{{ __lmod_source_path }}'
+    - '{{ __lmod_source_tarball_dest }}'
 
 ...

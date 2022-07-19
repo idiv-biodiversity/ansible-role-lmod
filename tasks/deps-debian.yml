@@ -9,7 +9,7 @@
 
 - name: install lmod dependencies
   ansible.builtin.apt:
-    name: '{{ lmod_os_packages | join(",") }}'
+    name: '{{ __lmod_os_packages | join(",") }}'
 
 # https://github.com/TACC/Lmod/commit/1d15717144f595b9a09e8421aa00b5dead3ed21d
 - name: fix lua-posix on Ubuntu

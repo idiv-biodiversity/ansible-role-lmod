@@ -1,9 +1,9 @@
 ---
 
-lmod_os_repos:
+__lmod_os_repos:
   - powertools
 
-lmod_os_packages:
+__lmod_os_packages:
   - lua
   - lua-devel
   - lua-json
@@ -13,7 +13,7 @@ lmod_os_packages:
   - tcl
   - tcl-devel
 
-lmod_lua_interpreter: /usr/bin/lua
-lmod_luac_interpreter: /usr/bin/luac
+__lmod_lua_interpreter: /usr/bin/lua
+__lmod_luac_interpreter: /usr/bin/luac
 
 ...

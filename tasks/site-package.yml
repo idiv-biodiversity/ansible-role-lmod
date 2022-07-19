@@ -3,7 +3,7 @@
 - name: deploy site package script
   ansible.builtin.template:
     src: '{{ lmod_site_package }}'
-    dest: '{{ lmod_install_dir }}/libexec/SitePackage.lua'
+    dest: '{{ __lmod_install_dir }}/libexec/SitePackage.lua'
     owner: root
     group: root
     mode: 0644

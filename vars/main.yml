@@ -1,41 +1,41 @@
 ---
 
-lmod_base_dir: '{{ lmod_prefix }}/lmod'
+__lmod_base_dir: '{{ lmod_prefix }}/lmod'
 
-lmod_install_dir: '{{ lmod_base_dir }}/{{ lmod_version }}'
+__lmod_install_dir: '{{ __lmod_base_dir }}/{{ lmod_version }}'
 
-lmod_install_link: '{{ lmod_base_dir }}/lmod'
+__lmod_install_link: '{{ __lmod_base_dir }}/lmod'
 
 # -----------------------------------------------------------------------------
 # source
 # -----------------------------------------------------------------------------
 
-lmod_source_tarball_url: >-
+__lmod_source_tarball_url: >-
   https://github.com/TACC/Lmod/archive/{{ lmod_version }}.tar.gz
 
-lmod_source_tarball_dest: '/tmp/lmod-{{ lmod_version }}.tar.gz'
+__lmod_source_tarball_dest: '/tmp/lmod-{{ lmod_version }}.tar.gz'
 
-lmod_source_path: '/tmp/Lmod-{{ lmod_version }}'
+__lmod_source_path: '/tmp/Lmod-{{ lmod_version }}'
 
 # -----------------------------------------------------------------------------
 # shell configuration
 # -----------------------------------------------------------------------------
 
-lmod_init_bash_path: '/etc/profile.d/{{ lmod_init_bash_file }}'
+__lmod_init_bash_path: '/etc/profile.d/{{ lmod_init_bash_file }}'
 
-lmod_init_bash_source: '{{ lmod_install_link }}/init/profile'
+__lmod_init_bash_source: '{{ __lmod_install_link }}/init/profile'
 
-lmod_init_csh_path: '/etc/profile.d/{{ lmod_init_csh_file }}'
+__lmod_init_csh_path: '/etc/profile.d/{{ lmod_init_csh_file }}'
 
-lmod_init_csh_source: '{{ lmod_install_link }}/init/cshrc'
+__lmod_init_csh_source: '{{ __lmod_install_link }}/init/cshrc'
 
 # -----------------------------------------------------------------------------
 # canary
 # -----------------------------------------------------------------------------
 
-lmod_canary_opt_in_path: '~/{{ lmod_canary_opt_in_file }}'
+__lmod_canary_opt_in_path: '~/{{ lmod_canary_opt_in_file }}'
 
-lmod_canary_opt_out_path: '~/{{ lmod_canary_opt_out_file }}'
+__lmod_canary_opt_out_path: '~/{{ lmod_canary_opt_out_file }}'
 
 # -----------------------------------------------------------------------------
 # operating system

@@ -6,9 +6,9 @@
     minute: '{{ lmod_spider_cache_cron_minute }}'
     user: 'root'
     job: >
-      source {{ lmod_init_bash_source }}
+      source {{ __lmod_init_bash_source }}
       &&
-      {{ lmod_install_link }}/libexec/update_lmod_system_cache_files
+      {{ __lmod_install_link }}/libexec/update_lmod_system_cache_files
       {{ lmod_spider_cache_cron_modulepath | join(':') }}
     cron_file: 'lmod'
   tags:

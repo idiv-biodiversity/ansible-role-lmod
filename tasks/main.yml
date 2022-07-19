@@ -9,19 +9,19 @@
 
 - name: check if lmod is installed
   ansible.builtin.stat:
-    path: '{{ lmod_install_dir }}'
+    path: '{{ __lmod_install_dir }}'
   when: lmod_install
-  register: lmod_install_dir_s
+  register: __lmod_install_dir_s
   check_mode: no
   changed_when: >-
-    not lmod_install_dir_s.stat.exists
+    not __lmod_install_dir_s.stat.exists
   failed_when: no
 
 - name: installation
   include_tasks: install.yml
   when: >
     lmod_install and
-    not lmod_install_dir_s.stat.exists
+    not __lmod_install_dir_s.stat.exists
 
 - import_tasks: site-package.yml
   when: >
@@ -38,7 +38,7 @@
 - name: module path file
   ansible.builtin.template:
     src: 'modulespath.j2'
-    dest: '{{ lmod_install_dir }}/init/.modulespath'
+    dest: '{{ __lmod_install_dir }}/init/.modulespath'
     owner: root
     group: root
     mode: 0644

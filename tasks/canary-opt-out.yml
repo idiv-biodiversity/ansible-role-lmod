@@ -13,8 +13,8 @@
     mode: 0644
   with_items:
     - src: 'bash-opt-out.j2'
-      dest: '{{ lmod_init_bash_path }}'
+      dest: '{{ __lmod_init_bash_path }}'
     - src: 'csh-opt-out.j2'
-      dest: '{{ lmod_init_csh_path }}'
+      dest: '{{ __lmod_init_csh_path }}'
 
 ...

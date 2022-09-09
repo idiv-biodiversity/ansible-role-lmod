@@ -1,6 +1,7 @@
 ---
 
-__lmod_os_repos: []
+__lmod_os_repos:
+  - epel
 
 __lmod_dependencies:
   - bc

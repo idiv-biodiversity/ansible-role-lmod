@@ -1,6 +1,7 @@
 ---
 
 __lmod_os_repos:
+  - epel
   - powertools
 
 __lmod_os_packages:

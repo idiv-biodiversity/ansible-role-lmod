@@ -1,6 +1,7 @@
 ---
 
 skip_list:
+  - name[casing]
   - role-name
 
 ...

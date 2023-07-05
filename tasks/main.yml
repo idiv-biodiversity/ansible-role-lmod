@@ -5,7 +5,7 @@
     {{ __lmod_os_distro }}.yml
 
 - name: install dependencies
-  include_tasks: 'deps-{{ ansible_os_family | lower }}.yml'
+  ansible.builtin.include_tasks: 'deps-{{ ansible_os_family | lower }}.yml'
 
 - name: check if lmod is installed
   ansible.builtin.stat:
@@ -18,19 +18,20 @@
   failed_when: no
 
 - name: installation
-  include_tasks: install.yml
+  ansible.builtin.include_tasks: install.yml
   when: >
     lmod_install and
     not __lmod_install_dir_s.stat.exists
 
-- import_tasks: site-package.yml
+- name: site package
+  ansible.builtin.import_tasks: site-package.yml
   when: >
     lmod_install and lmod_site_package is defined
   tags:
     - lmod-site-package
 
 - name: configuration
-  import_tasks: config.yml
+  ansible.builtin.import_tasks: config.yml
   when: lmod_install
   tags:
     - lmod-config
@@ -45,12 +46,12 @@
   when: lmod_install and lmod_module_paths is defined
 
 - name: use canary release
-  include_tasks: 'canary-{{ lmod_canary }}.yml'
+  ansible.builtin.include_tasks: 'canary-{{ lmod_canary }}.yml'
   tags:
     - lmod-canary
 
 - name: install spider cache cron
-  import_tasks: spider-cron.yml
+  ansible.builtin.import_tasks: spider-cron.yml
   when: lmod_spider_cache_cron
   tags:
     - lmod-spider-cache

@@ -1,7 +1,7 @@
 ---
 
 - name: remove opt-in skeleton files
-  import_tasks: canary-rm-opt-in-skel.yml
+  ansible.builtin.import_tasks: canary-rm-opt-in-skel.yml
 
 - name: install canary opt-out scripts
   ansible.builtin.template:

@@ -1,7 +1,7 @@
 ---
 
 - name: use opt-in canary
-  import_tasks: canary-opt-in.yml
+  ansible.builtin.import_tasks: canary-opt-in.yml
 
 - name: install canary opt-in skeleton file
   ansible.builtin.copy:

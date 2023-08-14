@@ -12,6 +12,8 @@ lmod_prefix: '/opt/apps'
 
 lmod_module_root_path: '{{ lmod_prefix }}/modulefiles'
 
+lmod_source_temp_dir: '/tmp'
+
 # -----------------------------------------------------------------------------
 # spider cache
 # -----------------------------------------------------------------------------

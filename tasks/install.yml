@@ -14,7 +14,7 @@
   ansible.builtin.unarchive:
     copy: no
     src: '{{ __lmod_source_tarball_dest }}'
-    dest: '/tmp'
+    dest: '{{ lmod_source_temp_dir }}'
     creates: '{{ __lmod_source_path }}'
 
 - name: configure and install lmod from source

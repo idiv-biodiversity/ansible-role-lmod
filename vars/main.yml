@@ -13,7 +13,8 @@ __lmod_install_link: '{{ __lmod_base_dir }}/lmod'
 __lmod_source_tarball_url: >-
   https://github.com/TACC/Lmod/archive/{{ lmod_version }}.tar.gz
 
-__lmod_source_tarball_dest: '{{ lmod_source_temp_dir }}/lmod-{{ lmod_version }}.tar.gz'
+__lmod_source_tarball_dest: >-
+  {{ lmod_source_temp_dir }}/lmod-{{ lmod_version }}.tar.gz
 
 __lmod_source_path: '{{ lmod_source_temp_dir }}/Lmod-{{ lmod_version }}'
 

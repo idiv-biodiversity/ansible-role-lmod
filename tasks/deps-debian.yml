@@ -1,11 +1,12 @@
 ---
 
 # https://github.com/ansible/ansible/issues/25414#issuecomment-440549135
-- name: wait for any possibly running unattended upgrade to finish # noqa 301
+- name: wait for any possibly running unattended upgrade to finish
   ansible.builtin.command: >-
     systemd-run
       --property="After=apt-daily.service apt-daily-upgrade.service"
       --wait /bin/true
+  changed_when: no
 
 - name: install lmod dependencies
   ansible.builtin.apt:

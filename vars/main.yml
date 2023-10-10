@@ -37,6 +37,17 @@ __lmod_vars_files:
   paths:
     - vars
 
+__lmod_dependency_tasks:
+  files: >-
+    {{
+      __lmod_first_found |
+        map('regex_replace', '^', 'deps-') |
+        map('regex_replace', '$', '.yml') |
+        list
+    }}
+  paths:
+    - tasks
+
 __lmod_build_dependency_tasks:
   files: >-
     {{
@@ -89,5 +100,16 @@ __lmod_init_csh_source: '{{ __lmod_install_link }}/init/cshrc'
 __lmod_canary_opt_in_path: '~/{{ lmod_canary_opt_in_file }}'
 
 __lmod_canary_opt_out_path: '~/{{ lmod_canary_opt_out_file }}'
+
+# -----------------------------------------------------------------------------
+# other
+# -----------------------------------------------------------------------------
+
+__lmod_virtualized: >-
+  {{
+    ansible_facts.virtualization_role == "guest"
+    and
+    ansible_facts.virtualization_type == "docker"
+  }}
 
 ...

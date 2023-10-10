@@ -4,8 +4,16 @@
   ansible.builtin.include_vars: >-
     {{ lookup('ansible.builtin.first_found', __lmod_vars_files) }}
 
+- name: update package cache
+  ansible.builtin.package:
+    update_cache: yes
+  become: yes
+  when:
+    - __lmod_virtualized
+
 - name: install dependencies
-  ansible.builtin.include_tasks: 'deps-{{ __lmod_os }}.yml'
+  ansible.builtin.include_tasks: >-
+    {{ lookup('ansible.builtin.first_found', __lmod_dependency_tasks) }}
 
 - name: check if lmod is installed
   ansible.builtin.stat:

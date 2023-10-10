@@ -1,9 +1,8 @@
 ---
 
 - name: 'install dependencies {{ __lmod_dependencies }}'
-  ansible.builtin.yum:
+  ansible.builtin.package:
     name: '{{ __lmod_dependencies }}'
-    enablerepo: '{{ __lmod_os_repos }}'
   become: yes
 
 ...

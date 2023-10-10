@@ -1,0 +1,30 @@
+---
+
+- name: verify
+  hosts: all
+  tasks:
+
+    - name: run some module commands
+      ansible.builtin.shell: >-
+        . /etc/profile.d/z00-lmod.sh &&
+        module --terse list &&
+        module load lmod &&
+        module --terse list
+      args:
+        executable: /bin/bash
+      changed_when: no
+      register: __lmod_bash_module_commands
+
+    - name: debug module commands
+      ansible.builtin.debug:
+        var: __lmod_bash_module_commands
+
+    - name: assert on module commands
+      ansible.builtin.assert:
+        that:
+          - not __lmod_bash_module_commands.failed
+          - '"No modules loaded" in __lmod_bash_module_commands.stderr_lines[0]'
+          - '"lmod" in __lmod_bash_module_commands.stderr_lines[1]'
+        success_msg: 'module list works'
+
+...

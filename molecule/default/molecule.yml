@@ -1,0 +1,111 @@
+---
+
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+platforms:
+
+  - name: centos-7
+    image: geerlingguy/docker-centos7-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+  - name: centos-8
+    image: geerlingguy/docker-centos8-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+  - name: debian-buster
+    image: geerlingguy/docker-debian10-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+  - name: debian-bullseye
+    image: geerlingguy/docker-debian11-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+  - name: debian-bookworm
+    image: geerlingguy/docker-debian12-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+  - name: rocky-8
+    image: geerlingguy/docker-rockylinux8-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+  - name: rocky-9
+    image: geerlingguy/docker-rockylinux9-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+  - name: ubuntu-bionic
+    image: geerlingguy/docker-ubuntu1804-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+  - name: ubuntu-focal
+    image: geerlingguy/docker-ubuntu2004-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+  - name: ubuntu-jammy
+    image: geerlingguy/docker-ubuntu2204-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: yes
+    pre_build_image: yes
+
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      all:
+        lmod_install: yes
+
+verifier:
+  name: ansible
+
+...

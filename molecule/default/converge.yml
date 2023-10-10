@@ -1,0 +1,10 @@
+---
+
+- name: converge
+  hosts: all
+  tasks:
+    - name: include the role
+      ansible.builtin.include_role:
+        name: idiv_biodiversity.lmod
+
+...

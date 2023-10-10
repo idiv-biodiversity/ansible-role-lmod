@@ -1,0 +1,11 @@
+---
+
+collections:
+
+  - name: community.general
+
+roles:
+
+  - name: geerlingguy.repo-epel
+
+...

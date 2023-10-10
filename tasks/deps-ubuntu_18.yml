@@ -1,0 +1,42 @@
+---
+
+- name: 'install dependencies {{ __lmod_dependencies }}'
+  ansible.builtin.apt:
+    name: '{{ __lmod_dependencies }}'
+  become: yes
+
+# -----------------------------------------------------------------------------
+# bionic hacks documented here
+# https://github.com/TACC/Lmod/commit/1d15717144f595b9a09e8421aa00b5dead3ed21d
+# -----------------------------------------------------------------------------
+
+- name: make lua5.3 the default
+  community.general.alternatives:
+    name: lua-interpreter
+    link: /usr/bin/lua
+    path: /usr/bin/lua5.3
+    priority: 130
+    subcommands:
+      - name: lua-manual
+        link: /usr/share/man/man1/lua.1.gz
+        path: /usr/share/man/man1/lua5.3.1.gz
+
+- name: make luac5.3 the default
+  community.general.alternatives:
+    name: lua-compiler
+    link: /usr/bin/luac
+    path: /usr/bin/luac5.3
+    priority: 130
+    subcommands:
+      - name: lua-compiler-manual
+        link: /usr/share/man/man1/luac.1.gz
+        path: /usr/share/man/man1/luac5.3.1.gz
+
+- name: fix lua-posix symlink
+  ansible.builtin.file:
+    src: /usr/lib/x86_64-linux-gnu/liblua5.3-posix.so
+    dest: /usr/lib/x86_64-linux-gnu/lua/5.3/posix.so
+    state: link
+  become: yes
+
+...

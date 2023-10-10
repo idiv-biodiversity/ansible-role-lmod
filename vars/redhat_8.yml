@@ -4,6 +4,7 @@ __lmod_os_repos:
   - powertools
 
 __lmod_os_packages:
+  - bc
   - lua
   - lua-devel
   - lua-json

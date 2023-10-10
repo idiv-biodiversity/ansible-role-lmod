@@ -3,6 +3,7 @@
 __lmod_os_repos: []
 
 __lmod_os_packages:
+  - bc
   - lua
   - lua-filesystem
   - lua-json

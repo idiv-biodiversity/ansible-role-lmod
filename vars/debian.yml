@@ -1,6 +1,7 @@
 ---
 
 __lmod_os_packages:
+  - bc
   - lua5.3
   - lua-bit32
   - lua-posix

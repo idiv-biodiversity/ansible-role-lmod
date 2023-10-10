@@ -1,5 +1,46 @@
 ---
 
+# -----------------------------------------------------------------------------
+# distro / os handles
+# -----------------------------------------------------------------------------
+
+__lmod_distro: >-
+  {{ ansible_distribution | lower }}
+
+__lmod_os: >-
+  {{ ansible_os_family | lower }}
+
+__lmod_distro_version: >-
+  {{ __lmod_distro }}_{{ ansible_distribution_major_version }}
+
+__lmod_os_version: >-
+  {{ __lmod_os }}_{{ ansible_distribution_major_version }}
+
+# -----------------------------------------------------------------------------
+# first found snippets
+# -----------------------------------------------------------------------------
+
+__lmod_first_found:
+  - '{{ __lmod_distro_version }}'
+  - '{{ __lmod_os_version }}'
+  - '{{ __lmod_distro }}'
+  - '{{ __lmod_os }}'
+  - default
+
+__lmod_vars_files:
+  files: >-
+    {{
+      __lmod_first_found |
+        map('regex_replace', '$', '.yml') |
+        list
+    }}
+  paths:
+    - vars
+
+# -----------------------------------------------------------------------------
+# base paths
+# -----------------------------------------------------------------------------
+
 __lmod_base_dir: '{{ lmod_prefix }}/lmod'
 
 __lmod_install_dir: '{{ __lmod_base_dir }}/{{ lmod_version }}'
@@ -37,15 +78,5 @@ __lmod_init_csh_source: '{{ __lmod_install_link }}/init/cshrc'
 __lmod_canary_opt_in_path: '~/{{ lmod_canary_opt_in_file }}'
 
 __lmod_canary_opt_out_path: '~/{{ lmod_canary_opt_out_file }}'
-
-# -----------------------------------------------------------------------------
-# operating system
-# -----------------------------------------------------------------------------
-
-__lmod_os_distro: >-
-  {{ ansible_os_family | lower }}-{{ ansible_distribution_major_version }}
-
-__lmod_os_release: >-
-  {{ ansible_distribution | lower }}-{{ ansible_distribution_release }}
 
 ...

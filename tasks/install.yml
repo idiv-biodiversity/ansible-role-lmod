@@ -2,7 +2,7 @@
 
 - name: install build dependencies
   ansible.builtin.include_tasks: >-
-    build-deps-{{ ansible_os_family | lower }}.yml
+    build-deps-{{ __lmod_os }}.yml
 
 - name: download lmod source tarball
   ansible.builtin.get_url:

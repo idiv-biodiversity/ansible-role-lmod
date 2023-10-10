@@ -1,11 +1,11 @@
 ---
 
 - name: include os dependent variables
-  ansible.builtin.include_vars: >
-    {{ __lmod_os_distro }}.yml
+  ansible.builtin.include_vars: >-
+    {{ lookup('ansible.builtin.first_found', __lmod_vars_files) }}
 
 - name: install dependencies
-  ansible.builtin.include_tasks: 'deps-{{ ansible_os_family | lower }}.yml'
+  ansible.builtin.include_tasks: 'deps-{{ __lmod_os }}.yml'
 
 - name: check if lmod is installed
   ansible.builtin.stat:

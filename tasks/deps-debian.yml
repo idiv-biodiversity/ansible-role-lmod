@@ -19,8 +19,8 @@
     dest: /usr/lib/x86_64-linux-gnu/lua/5.3/posix.so
     state: link
   when: >-
-    __lmod_os_release == 'ubuntu-bionic'
+    __lmod_os_version == 'ubuntu_18'
     or
-    __lmod_os_release == 'ubuntu-focal'
+    __lmod_os_version == 'ubuntu_20'
 
 ...

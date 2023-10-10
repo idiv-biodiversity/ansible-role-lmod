@@ -2,7 +2,7 @@
 
 - name: install lmod dependencies
   ansible.builtin.yum:
-    pkg: '{{ __lmod_os_packages | join(",") }}'
+    pkg: '{{ __lmod_dependencies | join(",") }}'
     enablerepo: '{{ __lmod_os_repos | join(",") }}'
 
 ...

@@ -1,8 +1,9 @@
 ---
 
-- name: install lmod build dependencies
+- name: 'install build dependencies {{ __lmod_build_dependencies }}'
   ansible.builtin.yum:
-    pkg: "gcc,make"
+    name: '{{ __lmod_build_dependencies }}'
+    enablerepo: '{{ __lmod_os_repos | join(",") }}'
   become: yes
 
 ...

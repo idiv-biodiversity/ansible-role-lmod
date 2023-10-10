@@ -1,6 +1,6 @@
 ---
 
-__lmod_os_packages:
+__lmod_dependencies:
   - bc
   - lua5.3
   - lua-bit32
@@ -13,6 +13,9 @@ __lmod_os_packages:
   - tcl8.6
   - tcl8.6-dev
   - libtcl8.6
+
+__lmod_build_dependencies:
+  - gcc
 
 __lmod_lua_interpreter: /usr/bin/lua5.3
 __lmod_luac_interpreter: /usr/bin/luac5.3

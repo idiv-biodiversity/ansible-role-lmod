@@ -2,7 +2,7 @@
 
 __lmod_os_repos: []
 
-__lmod_os_packages:
+__lmod_dependencies:
   - bc
   - lua
   - lua-filesystem
@@ -12,6 +12,11 @@ __lmod_os_packages:
   - lua-term
   - tcl
   - tcl-devel
+
+__lmod_build_dependencies:
+  - gcc
+  - lua-devel
+  - make
 
 __lmod_lua_interpreter: /usr/bin/lua
 __lmod_luac_interpreter: /usr/bin/luac

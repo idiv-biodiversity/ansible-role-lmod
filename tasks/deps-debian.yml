@@ -8,9 +8,9 @@
       --wait /bin/true
   changed_when: no
 
-- name: install lmod dependencies
+- name: 'install lmod dependencies {{ __lmod_dependencies }}'
   ansible.builtin.apt:
-    name: '{{ __lmod_os_packages | join(",") }}'
+    name: '{{ __lmod_dependencies | join(",") }}'
   become: yes
 
 # https://github.com/TACC/Lmod/commit/1d15717144f595b9a09e8421aa00b5dead3ed21d

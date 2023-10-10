@@ -1,8 +1,8 @@
 ---
 
-- name: install lmod build dependencies
+- name: 'install build dependencies {{ __lmod_build_dependencies }}'
   ansible.builtin.apt:
-    name: gcc
+    name: '{{ __lmod_build_dependencies }}'
   become: yes
 
 ...

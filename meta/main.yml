@@ -8,6 +8,8 @@ dependencies:
       - yum-repo
 
 galaxy_info:
+  role_name: lmod
+  namespace: idiv_biodiversity
 
   author: Christian Krause
   description: 'install and set up "Lmod: A New Environment Module System"'

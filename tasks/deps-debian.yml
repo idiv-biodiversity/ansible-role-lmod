@@ -11,6 +11,7 @@
 - name: install lmod dependencies
   ansible.builtin.apt:
     name: '{{ __lmod_os_packages | join(",") }}'
+  become: yes
 
 # https://github.com/TACC/Lmod/commit/1d15717144f595b9a09e8421aa00b5dead3ed21d
 - name: fix lua-posix on Ubuntu
@@ -18,6 +19,7 @@
     src: /usr/lib/x86_64-linux-gnu/liblua5.3-posix.so
     dest: /usr/lib/x86_64-linux-gnu/lua/5.3/posix.so
     state: link
+  become: yes
   when: >-
     __lmod_os_version == 'ubuntu_18'
     or

@@ -3,5 +3,6 @@
 - name: install lmod build dependencies
   ansible.builtin.apt:
     name: gcc
+  become: yes
 
 ...

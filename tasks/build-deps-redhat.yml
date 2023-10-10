@@ -3,5 +3,6 @@
 - name: install lmod build dependencies
   ansible.builtin.yum:
     pkg: "gcc,make"
+  become: yes
 
 ...

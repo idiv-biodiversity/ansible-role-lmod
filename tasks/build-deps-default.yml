@@ -1,7 +1,7 @@
 ---
 
 - name: 'install build dependencies {{ __lmod_build_dependencies }}'
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: '{{ __lmod_build_dependencies }}'
   become: yes
 

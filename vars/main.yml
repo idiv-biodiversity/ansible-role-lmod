@@ -37,6 +37,17 @@ __lmod_vars_files:
   paths:
     - vars
 
+__lmod_build_dependency_tasks:
+  files: >-
+    {{
+      __lmod_first_found |
+        map('regex_replace', '^', 'build-deps-') |
+        map('regex_replace', '$', '.yml') |
+        list
+    }}
+  paths:
+    - tasks
+
 # -----------------------------------------------------------------------------
 # base paths
 # -----------------------------------------------------------------------------

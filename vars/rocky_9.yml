@@ -1,7 +1,7 @@
 ---
 
 __lmod_os_repos:
-  - 'codeready-builder-for-rhel-9-{{ ansible_architecture }}-rpms'
+  - crb
   - epel
 
 __lmod_dependencies:

@@ -8,6 +8,7 @@
   ansible.builtin.package:
     update_cache: yes
   become: yes
+  changed_when: no
   when:
     - __lmod_virtualized
 

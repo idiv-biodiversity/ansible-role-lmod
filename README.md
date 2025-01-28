@@ -37,7 +37,7 @@ Table of Contents
 Requirements
 ------------
 
-- Ansible 2.4
+- Ansible 2.9
 - **cron** for regular [system spider cache update](#system-spider-cache)
 
 Role Variables
@@ -205,7 +205,7 @@ Add to `requirements.yml`:
 # optional
 # - src: geerlingguy.repo-epel
 
-- src: idiv-biodiversity.lmod
+- src: idiv_biodiversity.lmod
 
 ...
 ```
@@ -239,7 +239,7 @@ Write a top-level playbook:
 - name: head server
   hosts: head
   roles:
-    - role: idiv-biodiversity.lmod
+    - role: idiv_biodiversity.lmod
       tags:
         - lmod
         - modules
@@ -260,7 +260,7 @@ Define the role dependency in `meta/main.yml`:
 
 dependencies:
 
-  - role: idiv-biodiversity.lmod
+  - role: idiv_biodiversity.lmod
     vars:
       lmod_prefix: '/software'
       lmod_canary: 'opt-in'
@@ -286,7 +286,7 @@ was added by [Tom Schoonjans][tschoonj], Research Software Engineer for HPC and 
 at the [Rosalind Franklin Institute][rfi].
 
 
-[author]: https://www.idiv.de/en/groups_and_people/employees/details/61.html
+[author]: https://www.idiv.de/staff/christian-krause/
 [canary]: https://martinfowler.com/bliki/CanaryRelease.html
 [lmod-canary]: http://lmod.readthedocs.io/en/latest/045_transition.html
 [epel]: https://fedoraproject.org/wiki/EPEL

@@ -15,6 +15,7 @@ __lmod_build_dependencies:
   - gcc
   - lua-devel
   - make
+  - procps-ng # ./configure wants `ps`
 
 __lmod_lua_interpreter: /usr/bin/lua
 __lmod_luac_interpreter: /usr/bin/luac

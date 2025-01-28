@@ -15,7 +15,10 @@ __lmod_dependencies:
   - libtcl8.6
 
 __lmod_build_dependencies:
+  - ca-certificates
   - gcc
+  - openssl
+  - procps # ./configure wants `ps`
 
 __lmod_lua_interpreter: /usr/bin/lua5.3
 __lmod_luac_interpreter: /usr/bin/luac5.3

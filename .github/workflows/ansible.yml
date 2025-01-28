@@ -25,24 +25,36 @@ jobs:
       fail-fast: false
       matrix:
         distro:
-          - centos-7
-          - centos-8
-          - debian-buster
-          - debian-bullseye
-          - debian-bookworm
-          - rocky-8
-          - rocky-9
-          - ubuntu-bionic
-          - ubuntu-focal
-          - ubuntu-jammy
+          - name: debian-bullseye
+            ansible: 2.18
+          - name: debian-bookworm
+            ansible: 2.18
+          - name: rockylinux-8
+            ansible: 2.16 # latest to support target python 3.6
+          - name: rockylinux-9
+            ansible: 2.18
+          - name: ubuntu-focal
+            ansible: 2.18
+          - name: ubuntu-jammy
+            ansible: 2.18
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - run: pip3 install ansible molecule molecule-plugins[docker] docker
-      - run: molecule test -p ${{ matrix.distro }}
+      - run: >-
+          pip3 install
+          ansible-core~=${{ matrix.distro.ansible }}.0
+          docker
+          molecule
+          molecule-plugins[docker]
+      - run: ansible --version
+      - run: molecule --version
+      - run: >-
+          molecule test
+          -p ${{ matrix.distro.name }}
         env:
+          ANSIBLE_DIFF_ALWAYS: 'True'
           PY_COLORS: '1'
 
 ...

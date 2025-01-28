@@ -101,15 +101,4 @@ __lmod_canary_opt_in_path: '~/{{ lmod_canary_opt_in_file }}'
 
 __lmod_canary_opt_out_path: '~/{{ lmod_canary_opt_out_file }}'
 
-# -----------------------------------------------------------------------------
-# other
-# -----------------------------------------------------------------------------
-
-__lmod_virtualized: >-
-  {{
-    ansible_facts.virtualization_role == "guest"
-    and
-    ansible_facts.virtualization_type == "docker"
-  }}
-
 ...

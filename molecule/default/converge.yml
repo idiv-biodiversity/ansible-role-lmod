@@ -2,8 +2,22 @@
 
 - name: converge
   hosts: all
+
+  pre_tasks:
+
+    - name: update package cache
+      ansible.builtin.package:
+        update_cache: yes
+      become: yes
+      changed_when: no
+      register: __update_package_cache
+      until: __update_package_cache is success
+      retries: 10
+      delay: 2
+
   tasks:
-    - name: include the role
+
+    - name: include role idiv_biodiversity.lmod
       ansible.builtin.include_role:
         name: idiv_biodiversity.lmod
 

@@ -4,14 +4,6 @@
   ansible.builtin.include_vars: >-
     {{ lookup('ansible.builtin.first_found', __lmod_vars_files) }}
 
-- name: update package cache
-  ansible.builtin.package:
-    update_cache: yes
-  become: yes
-  changed_when: no
-  when:
-    - __lmod_virtualized
-
 - name: install dependencies
   ansible.builtin.include_tasks: >-
     {{ lookup('ansible.builtin.first_found', __lmod_dependency_tasks) }}

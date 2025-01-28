@@ -43,7 +43,7 @@
     dest: '{{ __lmod_install_dir }}/init/.modulespath'
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   when: lmod_install and lmod_module_paths is defined
 
 - name: use canary release

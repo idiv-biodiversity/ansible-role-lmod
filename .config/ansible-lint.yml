@@ -1,7 +1,8 @@
 ---
 
+profile: production
+
 skip_list:
   - name[casing]
-  - role-name
 
 ...

@@ -10,7 +10,7 @@
     follow: no
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   with_items:
     - src: 'bash-opt-out.j2'
       dest: '{{ __lmod_init_bash_path }}'

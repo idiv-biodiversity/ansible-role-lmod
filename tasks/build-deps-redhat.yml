@@ -1,7 +1,7 @@
 ---
 
 - name: 'install build dependencies {{ __lmod_build_dependencies }}'
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: '{{ __lmod_build_dependencies }}'
     enablerepo: '{{ __lmod_os_repos | join(",") }}'
   become: yes

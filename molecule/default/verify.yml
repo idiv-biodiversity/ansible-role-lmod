@@ -23,7 +23,10 @@
       ansible.builtin.assert:
         that:
           - not __lmod_bash_module_commands.failed
-          - '"No modules loaded" in __lmod_bash_module_commands.stderr_lines[0]'
+          - >-
+            "No modules loaded"
+            in
+            __lmod_bash_module_commands.stderr_lines[0]
           - '"lmod" in __lmod_bash_module_commands.stderr_lines[1]'
         success_msg: 'module list works'
 

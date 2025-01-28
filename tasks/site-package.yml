@@ -6,6 +6,6 @@
     dest: '{{ __lmod_install_dir }}/libexec/SitePackage.lua'
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
 
 ...

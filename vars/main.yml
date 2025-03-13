@@ -27,16 +27,6 @@ __lmod_first_found:
   - '{{ __lmod_os }}'
   - default
 
-__lmod_vars_files:
-  files: >-
-    {{
-      __lmod_first_found |
-        map('regex_replace', '$', '.yml') |
-        list
-    }}
-  paths:
-    - vars
-
 __lmod_dependency_tasks:
   files: >-
     {{
@@ -100,5 +90,99 @@ __lmod_init_csh_source: '{{ __lmod_install_link }}/init/cshrc'
 __lmod_canary_opt_in_path: '~/{{ lmod_canary_opt_in_file }}'
 
 __lmod_canary_opt_out_path: '~/{{ lmod_canary_opt_out_file }}'
+
+# -----------------------------------------------------------------------------
+# os / distro differences
+# -----------------------------------------------------------------------------
+
+__lmod_lua_variants:
+  default: /usr/bin/lua
+  debian: /usr/bin/lua5.3
+
+__lmod_lua: >-
+  {{
+    __lmod_lua_variants[__lmod_os] |
+      default(__lmod_lua_variants['default'])
+  }}
+
+__lmod_luac_variants:
+  default: /usr/bin/luac
+  debian: /usr/bin/luac5.3
+
+__lmod_luac: >-
+  {{
+    __lmod_luac_variants[__lmod_os] |
+      default(__lmod_luac_variants['default'])
+  }}
+
+__lmod_dependency_variants:
+  debian:
+    - bc
+    - lua5.3
+    - lua-bit32
+    - lua-posix
+    - lua-posix-dev
+    - liblua5.3-0
+    - liblua5.3-dev
+    - tcl
+    - tcl-dev
+    - tcl8.6
+    - tcl8.6-dev
+    - libtcl8.6
+  redhat:
+    - bc
+    - lua
+    - lua-posix
+    - tcl
+    - tcl-devel
+  redhat_8:
+    - bc
+    - lua
+    - lua-json
+    - lua-lpeg
+    - lua-posix
+    - lua-term
+    - tcl
+    - tcl-devel
+
+__lmod_dependencies: >-
+  {{
+    __lmod_dependency_variants[__lmod_os_version] |
+      default(__lmod_dependency_variants[__lmod_os])
+  }}
+
+__lmod_build_dependency_variants:
+  debian:
+    - ca-certificates
+    - gcc
+    - openssl
+    - procps
+  redhat:
+    - gcc
+    - lua-devel
+    - make
+    - procps-ng
+
+__lmod_build_dependencies: >-
+  {{
+    __lmod_build_dependency_variants[__lmod_os]
+  }}
+
+__lmod_repo_variants:
+  redhat_8:
+    - epel
+    - powertools
+  redhat_9:
+    - 'codeready-builder-for-rhel-9-{{ ansible_architecture }}-rpms'
+    - epel
+  rocky_9:
+    - crb
+    - epel
+
+__lmod_repos: >-
+  {{
+    __lmod_repo_variants[__lmod_distro_version] |
+      default(__lmod_repo_variants[__lmod_os_version])
+  }}
 
 ...

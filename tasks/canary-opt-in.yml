@@ -8,7 +8,7 @@
     owner: root
     group: root
     mode: '0644'
-  with_items:
+  loop:
     - src: 'bash-opt-in.j2'
       dest: '{{ __lmod_init_bash_path }}'
     - src: 'csh-opt-in.j2'

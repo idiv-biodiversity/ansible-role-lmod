@@ -36,7 +36,7 @@
   ansible.builtin.file:
     path: '{{ item }}'
     state: absent
-  with_items:
+  loop:
     - '{{ __lmod_source_path }}'
     - '{{ __lmod_source_tarball_dest }}'
 

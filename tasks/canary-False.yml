@@ -11,7 +11,7 @@
     group: root
     state: link
     force: yes
-  with_items:
+  loop:
     - src: 'profile'
       dest: '{{ __lmod_init_bash_path }}'
     - src: 'cshrc'

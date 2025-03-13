@@ -44,6 +44,12 @@ platforms:
     groups:
       - nosudo
 
+  - name: ubuntu-noble
+    image: ghcr.io/hspaans/molecule-containers:ubuntu-noble
+    pre_build_image: yes
+    groups:
+      - nosudo
+
 provisioner:
   name: ansible
   inventory:

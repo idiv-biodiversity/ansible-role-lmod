@@ -37,6 +37,8 @@ jobs:
             ansible: 2.18
           - name: ubuntu-jammy
             ansible: 2.18
+          - name: ubuntu-noble
+            ansible: 2.18
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

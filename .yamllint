@@ -31,6 +31,7 @@ rules:
   key-duplicates: enable
   line-length:
     max: 79
+    allow-non-breakable-words: yes
   new-lines:
     type: unix
   octal-values:

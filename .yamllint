@@ -5,6 +5,8 @@ yaml-files:
   - '*.yml'
   - '.yamllint'
 
+ignore-from-file: .gitignore
+
 extends: default
 
 rules:

@@ -5,19 +5,17 @@
 
   pre_tasks:
 
+    - name: show debug information
+      ansible.builtin.include_role:
+        name: idiv_biodiversity.molecule_helpers.info
+
     - name: update package cache
-      ansible.builtin.package:
-        update_cache: yes
-      become: yes
-      changed_when: no
-      register: __update_package_cache
-      until: __update_package_cache is success
-      retries: 10
-      delay: 2
+      ansible.builtin.include_role:
+        name: idiv_biodiversity.molecule_helpers.package_cache
 
   tasks:
 
-    - name: include role idiv_biodiversity.lmod
+    - name: include the role
       ansible.builtin.include_role:
         name: idiv_biodiversity.lmod
 

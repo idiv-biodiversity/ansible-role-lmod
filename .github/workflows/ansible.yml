@@ -34,7 +34,8 @@ jobs:
           - name: rockylinux-9
             ansible: 2.18
           - name: ubuntu-focal
-            ansible: 2.18
+            ansible: 2.17 # 2.18: TypeError: unsupported operand type(s) for |:
+                          # '_Environ' and 'dict'
           - name: ubuntu-jammy
             ansible: 2.18
           - name: ubuntu-noble

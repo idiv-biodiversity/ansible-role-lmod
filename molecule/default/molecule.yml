@@ -1,65 +1,10 @@
 ---
 
-dependency:
-  name: galaxy
-
-driver:
-  name: docker
-
-platforms:
-
-  - name: debian-bullseye
-    image: ghcr.io/hspaans/molecule-containers:debian-bullseye
-    pre_build_image: yes
-    groups:
-      - nosudo
-
-  - name: debian-bookworm
-    image: ghcr.io/hspaans/molecule-containers:debian-bookworm
-    pre_build_image: yes
-    groups:
-      - nosudo
-
-  - name: rockylinux-8
-    image: ghcr.io/hspaans/molecule-containers:rockylinux-8
-    pre_build_image: yes
-    groups:
-      - nosudo
-
-  - name: rockylinux-9
-    image: ghcr.io/hspaans/molecule-containers:rockylinux-9
-    pre_build_image: yes
-    groups:
-      - nosudo
-
-  - name: ubuntu-focal
-    image: ghcr.io/hspaans/molecule-containers:ubuntu-focal
-    pre_build_image: yes
-    groups:
-      - nosudo
-
-  - name: ubuntu-jammy
-    image: ghcr.io/hspaans/molecule-containers:ubuntu-jammy
-    pre_build_image: yes
-    groups:
-      - nosudo
-
-  - name: ubuntu-noble
-    image: ghcr.io/hspaans/molecule-containers:ubuntu-noble
-    pre_build_image: yes
-    groups:
-      - nosudo
-
 provisioner:
   name: ansible
   inventory:
     group_vars:
       all:
         lmod_install: yes
-      nosudo:
-        ansible_become_method: su
-
-verifier:
-  name: ansible
 
 ...

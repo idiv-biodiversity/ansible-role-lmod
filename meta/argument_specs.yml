@@ -1,0 +1,80 @@
+---
+
+argument_specs:
+  main:
+    options:
+
+      lmod_version:
+        required: yes
+        type: str
+
+      lmod_install:
+        required: yes
+        type: bool
+
+      lmod_prefix:
+        required: yes
+        type: str
+
+      lmod_module_root_path:
+        required: yes
+        type: str
+
+      lmod_source_temp_dir:
+        required: yes
+        type: str
+
+      lmod_spider_cache_dir:
+        required: yes
+        type: str
+
+      lmod_spider_cache_stamp_file:
+        required: yes
+        type: str
+
+      lmod_spider_cache_cron:
+        required: yes
+        type: bool
+
+      lmod_spider_cache_cron_minute:
+        required: yes
+        type: str
+
+      lmod_spider_cache_cron_modulepath:
+        required: yes
+        type: list
+        elements: str
+
+      lmod_init_bash_file:
+        required: yes
+        type: str
+
+      lmod_init_csh_file:
+        required: yes
+        type: str
+
+      lmod_canary_opt_in_file:
+        required: yes
+        type: str
+
+      lmod_canary_opt_out_file:
+        required: yes
+        type: str
+
+      lmod_module_paths:
+        type: list
+        elements: str
+
+      lmod_site_package:
+        type: str
+
+      lmod_admin_messages:
+        type: list
+        elements: dict
+        options:
+          pattern:
+            type: str
+          message:
+            type: str
+
+...

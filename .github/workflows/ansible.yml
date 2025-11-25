@@ -26,25 +26,32 @@ jobs:
       matrix:
         distro:
           - name: debian-bullseye
-            ansible: 2.18
+            ansible: '2.18'
+            python: '>=3.11 <3.14'
           - name: debian-bookworm
-            ansible: 2.18
+            ansible: '2.18'
+            python: '>=3.11 <3.14'
           - name: rockylinux-8
-            ansible: 2.16 # latest to support target python 3.6
+            ansible: '2.16' # latest to support target python 3.6
+            python: '>=3.10 <3.13'
           - name: rockylinux-9
-            ansible: 2.18
+            ansible: '2.18'
+            python: '>=3.11 <3.14'
           - name: ubuntu-focal
-            ansible: 2.17 # 2.18: TypeError: unsupported operand type(s) for |:
-                          # '_Environ' and 'dict'
+            ansible: '2.17' # 2.18: TypeError: unsupported operand type(s) for |:
+                            # '_Environ' and 'dict'
+            python: '>=3.10 <3.13'
           - name: ubuntu-jammy
-            ansible: 2.18
+            ansible: '2.18'
+            python: '>=3.11 <3.14'
           - name: ubuntu-noble
-            ansible: 2.18
+            ansible: '2.18'
+            python: '>=3.11 <3.14'
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
+          python-version: ${{ matrix.distro.python }}
       - run: >-
           pip3 install
           ansible-core~=${{ matrix.distro.ansible }}.0

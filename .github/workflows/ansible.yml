@@ -34,6 +34,7 @@ jobs:
           - name: rockylinux-8
             ansible: '2.16' # latest to support target python 3.6
             python: '>=3.10 <3.13'
+            community_general: '<12.0.0' # 12+ needs ansible 2.17
           - name: rockylinux-9
             ansible: '2.18'
             python: '>=3.11 <3.14'
@@ -60,6 +61,11 @@ jobs:
           molecule-plugins[docker]
       - run: ansible --version
       - run: molecule --version
+      - name: install specific community.general collection version
+        if: matrix.distro.community_general
+        run: >-
+          ansible-galaxy collection install
+          'community.general:${{ matrix.distro.community_general }}'
       - run: >-
           molecule test
           -p ${{ matrix.distro.name }}

@@ -23,6 +23,7 @@ galaxy_info:
       versions:
         - bullseye
         - bookworm
+        - trixie
 
     - name: EL
       versions:

@@ -20,6 +20,12 @@ platforms:
     groups:
       - nosudo
 
+  - name: debian-trixie
+    image: ghcr.io/idiv-biodiversity/ansible-molecule-debian-trixie:latest
+    pre_build_image: yes
+    groups:
+      - nosudo
+
   - name: rockylinux-8
     image: ghcr.io/idiv-biodiversity/ansible-molecule-rockylinux-8:latest
     pre_build_image: yes

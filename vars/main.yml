@@ -125,6 +125,7 @@ __lmod_dependency_variants:
     - lua-posix
     - lua-posix-dev
     - lua5.3
+    - pkg-config
     - tcl
     - tcl-dev
     - tcl8.6

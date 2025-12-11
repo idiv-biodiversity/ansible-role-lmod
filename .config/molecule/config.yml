@@ -8,6 +8,12 @@ driver:
 
 platforms:
 
+  - name: debian-trixie
+    image: ghcr.io/idiv-biodiversity/ansible-molecule-debian-trixie:latest
+    pre_build_image: yes
+    groups:
+      - nosudo
+
   - name: debian-bullseye
     image: ghcr.io/idiv-biodiversity/ansible-molecule-debian-bullseye:latest
     pre_build_image: yes

@@ -129,6 +129,7 @@ __lmod_dependency_variants:
     - tcl8.6
     - tcl8.6-dev
     - libtcl8.6
+    - pkg-config
   redhat:
     - bc
     - lua

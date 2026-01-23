@@ -43,7 +43,7 @@ jobs:
             ansible: '2.20'
             python: '>=3.12 <3.15'
           - name: ubuntu-focal
-            ansible: '2.19'
+            ansible: '2.19' # latest to support target python 3.8
             python: '>=3.11 <3.14'
           - name: ubuntu-jammy
             ansible: '2.20'

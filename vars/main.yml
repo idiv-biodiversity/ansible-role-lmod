@@ -145,6 +145,15 @@ __lmod_dependency_variants:
     - lua-term
     - tcl
     - tcl-devel
+  redhat_10:
+    - bc
+    - lua
+    - lua-json
+    - lua-lpeg
+    - lua-posix
+    - lua-term
+    - tcl
+    - tcl-devel
 
 __lmod_dependencies: >-
   {{
@@ -177,6 +186,9 @@ __lmod_repo_variants:
     - 'codeready-builder-for-rhel-9-{{ ansible_architecture }}-rpms'
     - epel
   rocky_9:
+    - crb
+    - epel
+  rocky_10:
     - crb
     - epel
 

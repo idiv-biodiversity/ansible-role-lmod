@@ -38,6 +38,12 @@ platforms:
     groups:
       - nosudo
 
+  - name: rockylinux-10
+    image: ghcr.io/idiv-biodiversity/ansible-molecule-rockylinux-10:latest
+    pre_build_image: yes
+    groups:
+      - nosudo
+
   - name: ubuntu-focal
     image: ghcr.io/idiv-biodiversity/ansible-molecule-ubuntu-focal:latest
     pre_build_image: yes

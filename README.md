@@ -205,7 +205,9 @@ Add to `requirements.yml`:
 # optional
 # - src: geerlingguy.repo-epel
 
-- src: idiv_biodiversity.lmod
+- name: idiv_biodiversity.lmod
+  src: https://github.com/idiv-biodiversity/ansible-role-lmod
+  version: vX.Y.Z
 
 ...
 ```

@@ -1,0 +1,21 @@
+{% if (lmod_canary == "opt-in") or (lmod_canary == "opt-in-skel") %}
+if [[ ! -e {{ __lmod_canary_opt_in_path }} ]] ; then
+   return
+fi
+{% elif lmod_canary == "opt-out" %}
+if [[ -e {{ __lmod_canary_opt_out_path }} ]] ; then
+   return
+fi
+{% endif %}
+
+# https://lmod.readthedocs.io/en/latest/070_standard_modules.html
+if [ -z "$__Init_Default_Modules" ]; then
+   export __Init_Default_Modules=1;
+
+   ## ability to predefine elsewhere the default list
+   LMOD_SYSTEM_DEFAULT_MODULES=${LMOD_SYSTEM_DEFAULT_MODULES:-"StdEnv"}
+   export LMOD_SYSTEM_DEFAULT_MODULES
+   module --initial_load --no_redirect restore
+else
+   module refresh
+fi

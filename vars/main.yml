@@ -92,6 +92,14 @@ __lmod_canary_opt_in_path: '~/{{ lmod_canary_opt_in_file }}'
 __lmod_canary_opt_out_path: '~/{{ lmod_canary_opt_out_file }}'
 
 # -----------------------------------------------------------------------------
+# stdenv
+# -----------------------------------------------------------------------------
+
+__lmod_stdenv_bash_path: '/etc/profile.d/{{ lmod_stdenv_bash_file }}'
+
+__lmod_stdenv_csh_path: '/etc/profile.d/{{ lmod_stdenv_csh_file }}'
+
+# -----------------------------------------------------------------------------
 # os / distro differences
 # -----------------------------------------------------------------------------
 

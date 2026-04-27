@@ -68,4 +68,16 @@ lmod_canary_opt_in_file: '.lmod-yes'
 #
 lmod_canary_opt_out_file: '.lmod-no'
 
+# -----------------------------------------------------------------------------
+# stdenv
+# -----------------------------------------------------------------------------
+
+lmod_stdenv_lua_path: '{{ lmod_prefix }}/lmod/{{ lmod_version }}/modulefiles/Core/StdEnv.lua'
+
+lmod_stdenv_loads: []
+
+lmod_stdenv_bash_file: 'z01-stdenv.sh'
+
+lmod_stdenv_csh_file: 'z01-stdenv.csh'
+
 ...

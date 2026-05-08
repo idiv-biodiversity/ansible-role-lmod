@@ -1,43 +1,48 @@
 ---
 
-- name: Ensure StdEnv.lua destination dir is present
-  ansible.builtin.file:
-    path: '{{ lmod_stdenv_lua_path | ansible.builtin.dirname }}'
-    owner: root
-    group: root
-    mode: '0755'
-    recurse: true
-    state: directory
+- name: Install StdEnv
+  when: lmod_stdenv_lua_content | length > 0
+  block:
+    - name: Ensure StdEnv.lua destination dir is present
+      ansible.builtin.file:
+        path: '{{ lmod_stdenv_lua_dir }}'
+        owner: root
+        group: root
+        mode: '0755'
+        recurse: true
+        state: directory
+      when: lmod_stdenv_lua_install
 
-- name: Install StdEnv.lua
-  ansible.builtin.template:
-    src: StdEnv.lua.j2
-    dest: '{{ lmod_stdenv_lua_path }}'
-    owner: root
-    group: root
-    mode: '0644'
+    - name: Install StdEnv.lua
+      ansible.builtin.copy:
+        content: '{{ lmod_stdenv_lua_content }}'
+        dest: '{{ __lmod_stdenv_lua_path }}'
+        owner: root
+        group: root
+        mode: '0644'
+      when: lmod_stdenv_lua_install
 
-- name: Install StdEnv scripts
-  ansible.builtin.template:
-    src: '{{ item.src }}'
-    dest: '{{ item.dest }}'
-    follow: no
-    owner: root
-    group: root
-    mode: '0644'
-  loop:
-    - src: 'stdenv.sh.j2'
-      dest: '{{ __lmod_stdenv_bash_path }}'
-    - src: 'stdenv.csh.j2'
-      dest: '{{ __lmod_stdenv_csh_path }}'
-  when: lmod_stdenv_loads | length > 0
+    - name: Install StdEnv scripts
+      ansible.builtin.template:
+        src: '{{ item.src }}'
+        dest: '{{ item.dest }}'
+        follow: no
+        owner: root
+        group: root
+        mode: '0644'
+      loop:
+        - src: 'stdenv.sh.j2'
+          dest: '{{ __lmod_stdenv_bash_path }}'
+        - src: 'stdenv.csh.j2'
+          dest: '{{ __lmod_stdenv_csh_path }}'
 
-- name: Remove StdEnv scripts
+- name: Remove StdEnv files
   ansible.builtin.file:
     path: '{{ item }}'
     state: absent
   loop:
+    - '{{ __lmod_stdenv_lua_path }}'
     - '{{ __lmod_stdenv_bash_path }}'
     - '{{ __lmod_stdenv_csh_path }}'
-  when: lmod_stdenv_loads | length == 0
+  when: lmod_stdenv_lua_content | length == 0
 ...

@@ -47,6 +47,11 @@
   tags:
     - lmod-canary
 
+- name: install stdenv files
+  ansible.builtin.include_tasks: 'stdenv.yml'
+  tags:
+    - lmod-stdenv
+
 - name: install spider cache cron
   ansible.builtin.import_tasks: spider-cron.yml
   when: lmod_spider_cache_cron
